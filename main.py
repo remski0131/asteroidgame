@@ -1,29 +1,24 @@
-import os
 import pygame
 from constants import *
 
+
 def main():
-    # Initialize pygame first
     pygame.init()
-    
-    # Then set the display mode
-    pygame.display.init()
-    
-    # Create the screen
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-    
-    # Game loop
-    running = True
-    while running:
+
+    time = pygame.time.Clock()
+    dt = 0
+
+    while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                running = False
-                
-        screen.fill((0, 0, 0))
+                return
+
+        screen.fill("black")
         pygame.display.flip()
-    
-    # Clean up
-    pygame.quit()
+        dt = time.tick(60) / 1000
+
+
 
 if __name__ == "__main__":
     main()
